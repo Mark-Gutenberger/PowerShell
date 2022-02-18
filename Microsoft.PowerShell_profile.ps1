@@ -66,7 +66,7 @@ function iuoagfjhawefp() {
 		'\.(txt|cfg|conf|ini|csv|data|log|log1|log2|log3|log4)$', $regex_opts)
 	$code_files = New-Object System.Text.RegularExpressions.Regex(
 		'\.(xml|html|js|jsx|ts|tsx|java|c|cc|cpp|h|hh|hpp|cs|rs|go|sh|bash|pl|class|php|json|jsonc|json5|yaml|yml)$', $regex_opts)
-
+	Write-Host("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-") -ForegroundColor 14
 	Invoke-Expression ("Get-ChildItem $args") | ForEach-Object {
 		if ($_.GetType().Name -eq 'DirectoryInfo') {
 			$Host.UI.RawUI.ForegroundColor = '1'# blue
