@@ -6,6 +6,7 @@ function kdsghfklajhg {
 	wsl.exe bash 
 };
 Set-Alias wsl kdsghfklajhg;
+Set-Alias bash kdsghfklajhg;
 
 
 # this is my bash prompt
