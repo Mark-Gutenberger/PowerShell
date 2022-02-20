@@ -2,8 +2,8 @@
 #                                      START CODE                                         #
 ###########################################################################################
 
-function kdsghfklajhg { 
-	wsl.exe bash 
+function kdsghfklajhg {
+	wsl.exe bash
 };
 Set-Alias wsl kdsghfklajhg;
 Set-Alias bash kdsghfklajhg;
@@ -49,7 +49,7 @@ function iuoagfjhawefp() {
 	$fore = $Host.UI.RawUI.ForegroundColor
 	$regex_opts = ([System.Text.RegularExpressions.RegexOptions]::IgnoreCase `
 			-bor [System.Text.RegularExpressions.RegexOptions]::Compiled)
-			
+
 	# TODO: add more extensive file matching support.
 	# NOTE: these matching patterns are optimized for windows.
 	# for reference, these are my linux patterns:
