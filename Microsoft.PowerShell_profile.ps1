@@ -7,11 +7,7 @@ function kdsghfklajhg {
 };
 Set-Alias wsl kdsghfklajhg;
 Set-Alias bash kdsghfklajhg;
-
-function kajdhsgflkhjsdag {
-	react-native
-}
-Set-Alias rn kajdhsgflkhjsdag;
+Set-Alias rn React-Native;
 # fallback prompt, ya know, just in case something Fs up
 # function Prompt() {
 # "PS $($executionContext.SessionState.Path.CurrentLocation)$( '>' * ($nestedPromptLevel + 1)) ";
