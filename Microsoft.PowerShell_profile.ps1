@@ -8,7 +8,7 @@ function kdsghfklajhg {
 Set-Alias wsl kdsghfklajhg;
 Set-Alias bash kdsghfklajhg;
 
-fucntion kajdhsgflkhjsdag {
+function kajdhsgflkhjsdag {
 	react-native
 }
 Set-Alias rn kajdhsgflkhjsdag;
