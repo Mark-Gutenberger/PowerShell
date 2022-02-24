@@ -2,12 +2,14 @@
 #                                      START CODE                                         #
 ###########################################################################################
 
+#custom aliases:
 function kdsghfklajhg {
 	wsl.exe bash
 };
 Set-Alias wsl kdsghfklajhg;
 Set-Alias bash kdsghfklajhg;
 Set-Alias rn React-Native;
+
 # fallback prompt, ya know, just in case something Fs up
 # function Prompt() {
 # "PS $($executionContext.SessionState.Path.CurrentLocation)$( '>' * ($nestedPromptLevel + 1)) ";
