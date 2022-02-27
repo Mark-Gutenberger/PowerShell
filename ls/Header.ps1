@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Header.ps1 (c) 2022
 Desc: Yeah I code like a C developer.. so?
 Created:  2022-02-24T00:50:51.167Z
-Modified: 2022-02-24T01:10:18.408Z
+Modified: 2022-02-27T19:04:08.704Z
 #>
 
 $regex_opts = ([System.Text.RegularExpressions.RegexOptions]::IgnoreCase `

@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Main.ps1 (c) 2022
 Desc: description
 Created:  2022-02-24T00:34:39.695Z
-Modified: 2022-02-24T01:05:50.492Z
+Modified: 2022-02-27T19:04:14.970Z
 #>
 
 function getDirSize() {
@@ -30,7 +30,7 @@ function getDirSize() {
 };
 
 
-. $env:USERPROFILE\Documents\Powershell\ls\Header.ps1
+. $env:USERPROFILE\Documents\Powershell\ls\Header.ps1 ?? ~/.config/Powershell/ls/Header.ps1
 
 function Custom-ls() {
 	$fore = $Host.UI.RawUI.ForegroundColor
