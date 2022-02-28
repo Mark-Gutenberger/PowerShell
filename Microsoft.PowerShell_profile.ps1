@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-02-27T19:47:31.585Z
+Modified: 2022-02-28T14:12:17.778Z
 #>
 
 # Clear this if you want, I just prefer to see that Powershell didn't shit its pants right away.
@@ -115,7 +115,7 @@ Get-Location | Write-Host
 
 #custom aliases:
 function Custom-wsl {
-	wsl.exe bash
+	(wsl.exe $args bash);
 };
 
 Set-Alias wsl Custom-wsl;
