@@ -1,0 +1,243 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">PowerShell-Beautifier</S>
+      <Version N="Version">1.2.5</Version>
+      <S N="Type">Module</S>
+      <S N="Description">PowerShell beautifier / code cleaner / pretty printer.  For more info see: https://github.com/DTW-DanWard/PowerShell-Beautifier</S>
+      <S N="Author">Dan Ward</S>
+      <S N="CompanyName">DanWard</S>
+      <S N="Copyright">Copyright 2012-2017 Dan Ward. All rights reserved.</S>
+      <DT N="PublishedDate">2018-07-30T01:17:08-05:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2022-03-01T07:44:16.3209598-06:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/DTW-DanWard/PowerShell-Beautifier/blob/master/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/DTW-DanWard/PowerShell-Beautifier</URI>
+      <Nil N="IconUri" />
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>Beautifier</S>
+          <S>WhiteSpace</S>
+          <S>PrettyPrinter</S>
+          <S>Tabs</S>
+          <S>Spaces</S>
+          <S>Format</S>
+          <S>Core</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Add-DTWFileEncodingByteOrderMarker</S>
+                <S>Get-DTWFileEncoding</S>
+                <S>Get-DTWFileEncodingSystemProviderNameFromTypeName</S>
+                <S>Get-DTWFileEncodingTypeFromName</S>
+                <S>Compare-DTWFiles</S>
+                <S>Compare-DTWFilesIncludingBOM</S>
+                <S>Compare-DTWFilesIgnoringBOM</S>
+                <S>Set-LookupTableValuesFromFile</S>
+                <S>Save-LookupTableValuesToFile</S>
+                <S>Update-DTWRegenerateLookupTableValuesFile</S>
+                <S>Set-LookupTableValuesFromMemory</S>
+                <S>Initialize-ValidCommandNames</S>
+                <S>Get-CoreSafeAliases</S>
+                <S>Initialize-ValidCommandParameterNames</S>
+                <S>Initialize-ValidAttributeNames</S>
+                <S>Initialize-ValidMemberNames</S>
+                <S>Initialize-ValidVariableNames</S>
+                <S>Invoke-Main</S>
+                <S>Initialize-ProcessVariables</S>
+                <S>Get-ValidCommandName</S>
+                <S>Get-ValidCommandParameterName</S>
+                <S>Get-ValidAttributeName</S>
+                <S>Get-ValidMemberName</S>
+                <S>Get-ValidVariableName</S>
+                <S>Add-StringContentToDestinationFileStreamWriter</S>
+                <S>Copy-ArrayContentFromSourceArrayToDestinationFileStreamWriter</S>
+                <S>Import-ScriptContent</S>
+                <S>Invoke-TokenizeSourceScriptContent</S>
+                <S>Copy-SourceContentToDestinationStream</S>
+                <S>Write-TokenContentByType</S>
+                <S>Write-TokenContent_Attribute</S>
+                <S>Write-TokenContent_Command</S>
+                <S>Write-TokenContent_CommandArgument</S>
+                <S>Write-TokenContent_CommandParameter</S>
+                <S>Write-TokenContent_Comment</S>
+                <S>Write-TokenContent_GroupEnd</S>
+                <S>Write-TokenContent_GroupStart</S>
+                <S>Write-TokenContent_KeyWord</S>
+                <S>Write-TokenContent_LoopLabel</S>
+                <S>Write-TokenContent_LineContinuation</S>
+                <S>Write-TokenContent_Member</S>
+                <S>Write-TokenContent_NewLine</S>
+                <S>Write-NewLine</S>
+                <S>Write-TokenContent_Number</S>
+                <S>Write-TokenContent_Operator</S>
+                <S>Write-TokenContent_Position</S>
+                <S>Write-TokenContent_StatementSeparator</S>
+                <S>Write-TokenContent_String</S>
+                <S>Write-TokenContent_Type</S>
+                <S>Write-TokenContent_Variable</S>
+                <S>Write-TokenContent_Unknown</S>
+                <S>Test-AddSpaceFollowingToken</S>
+                <S>Edit-DTWBeautifyScript</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="7">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Add-DTWFileEncodingByteOrderMarker</S>
+                <S>Get-DTWFileEncoding</S>
+                <S>Get-DTWFileEncodingSystemProviderNameFromTypeName</S>
+                <S>Get-DTWFileEncodingTypeFromName</S>
+                <S>Compare-DTWFiles</S>
+                <S>Compare-DTWFilesIncludingBOM</S>
+                <S>Compare-DTWFilesIgnoringBOM</S>
+                <S>Set-LookupTableValuesFromFile</S>
+                <S>Save-LookupTableValuesToFile</S>
+                <S>Update-DTWRegenerateLookupTableValuesFile</S>
+                <S>Set-LookupTableValuesFromMemory</S>
+                <S>Initialize-ValidCommandNames</S>
+                <S>Get-CoreSafeAliases</S>
+                <S>Initialize-ValidCommandParameterNames</S>
+                <S>Initialize-ValidAttributeNames</S>
+                <S>Initialize-ValidMemberNames</S>
+                <S>Initialize-ValidVariableNames</S>
+                <S>Invoke-Main</S>
+                <S>Initialize-ProcessVariables</S>
+                <S>Get-ValidCommandName</S>
+                <S>Get-ValidCommandParameterName</S>
+                <S>Get-ValidAttributeName</S>
+                <S>Get-ValidMemberName</S>
+                <S>Get-ValidVariableName</S>
+                <S>Add-StringContentToDestinationFileStreamWriter</S>
+                <S>Copy-ArrayContentFromSourceArrayToDestinationFileStreamWriter</S>
+                <S>Import-ScriptContent</S>
+                <S>Invoke-TokenizeSourceScriptContent</S>
+                <S>Copy-SourceContentToDestinationStream</S>
+                <S>Write-TokenContentByType</S>
+                <S>Write-TokenContent_Attribute</S>
+                <S>Write-TokenContent_Command</S>
+                <S>Write-TokenContent_CommandArgument</S>
+                <S>Write-TokenContent_CommandParameter</S>
+                <S>Write-TokenContent_Comment</S>
+                <S>Write-TokenContent_GroupEnd</S>
+                <S>Write-TokenContent_GroupStart</S>
+                <S>Write-TokenContent_KeyWord</S>
+                <S>Write-TokenContent_LoopLabel</S>
+                <S>Write-TokenContent_LineContinuation</S>
+                <S>Write-TokenContent_Member</S>
+                <S>Write-TokenContent_NewLine</S>
+                <S>Write-NewLine</S>
+                <S>Write-TokenContent_Number</S>
+                <S>Write-TokenContent_Operator</S>
+                <S>Write-TokenContent_Position</S>
+                <S>Write-TokenContent_StatementSeparator</S>
+                <S>Write-TokenContent_String</S>
+                <S>Write-TokenContent_Type</S>
+                <S>Write-TokenContent_Variable</S>
+                <S>Write-TokenContent_Unknown</S>
+                <S>Test-AddSpaceFollowingToken</S>
+                <S>Edit-DTWBeautifyScript</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="6" />
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="6" />
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="6" />
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <Nil N="ReleaseNotes" />
+      <Obj N="Dependencies" RefId="8">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="9">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">Copyright 2012-2017 Dan Ward. All rights reserved.</S>
+          <S N="description">PowerShell beautifier / code cleaner / pretty printer.  For more info see: https://github.com/DTW-DanWard/PowerShell-Beautifier</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">13401</S>
+          <S N="downloadCount">14825</S>
+          <S N="packageSize">129632</S>
+          <S N="published">07/30/18 01:17:08 AM -05:00</S>
+          <S N="created">07/30/18 01:17:08 AM -05:00</S>
+          <S N="lastUpdated">03/01/22 01:42:22 PM -06:00</S>
+          <S N="tags">Beautifier WhiteSpace PrettyPrinter Tabs Spaces Format Core PSModule PSFunction_Add-DTWFileEncodingByteOrderMarker PSCommand_Add-DTWFileEncodingByteOrderMarker PSFunction_Get-DTWFileEncoding PSCommand_Get-DTWFileEncoding PSFunction_Get-DTWFileEncodingSystemProviderNameFromTypeName PSCommand_Get-DTWFileEncodingSystemProviderNameFromTypeName PSFunction_Get-DTWFileEncodingTypeFromName PSCommand_Get-DTWFileEncodingTypeFromName PSFunction_Compare-DTWFiles PSCommand_Compare-DTWFiles PSFunction_Compare-DTWFilesIncludingBOM PSCommand_Compare-DTWFilesIncludingBOM PSFunction_Compare-DTWFilesIgnoringBOM PSCommand_Compare-DTWFilesIgnoringBOM PSFunction_Set-LookupTableValuesFromFile PSCommand_Set-LookupTableValuesFromFile PSFunction_Save-LookupTableValuesToFile PSCommand_Save-LookupTableValuesToFile PSFunction_Update-DTWRegenerateLookupTableValuesFile PSCommand_Update-DTWRegenerateLookupTableValuesFile PSFunction_Set-LookupTableValuesFromMemory PSCommand_Set-LookupTableValuesFromMemory PSFunction_Initialize-ValidCommandNames PSCommand_Initialize-ValidCommandNames PSFunction_Get-CoreSafeAliases PSCommand_Get-CoreSafeAliases PSFunction_Initialize-ValidCommandParameterNames PSCommand_Initialize-ValidCommandParameterNames PSFunction_Initialize-ValidAttributeNames PSCommand_Initialize-ValidAttributeNames PSFunction_Initialize-ValidMemberNames PSCommand_Initialize-ValidMemberNames PSFunction_Initialize-ValidVariableNames PSCommand_Initialize-ValidVariableNames PSFunction_Invoke-Main PSCommand_Invoke-Main PSFunction_Initialize-ProcessVariables PSCommand_Initialize-ProcessVariables PSFunction_Get-ValidCommandName PSCommand_Get-ValidCommandName PSFunction_Get-ValidCommandParameterName PSCommand_Get-ValidCommandParameterName PSFunction_Get-ValidAttributeName PSCommand_Get-ValidAttributeName PSFunction_Get-ValidMemberName PSCommand_Get-ValidMemberName PSFunction_Get-ValidVariableName PSCommand_Get-ValidVariableName PSFunction_Add-StringContentToDestinationFileStreamWriter PSCommand_Add-StringContentToDestinationFileStreamWriter PSFunction_Copy-ArrayContentFromSourceArrayToDestinationFileStreamWriter PSCommand_Copy-ArrayContentFromSourceArrayToDestinationFileStreamWriter PSFunction_Import-ScriptContent PSCommand_Import-ScriptContent PSFunction_Invoke-TokenizeSourceScriptContent PSCommand_Invoke-TokenizeSourceScriptContent PSFunction_Copy-SourceContentToDestinationStream PSCommand_Copy-SourceContentToDestinationStream PSFunction_Write-TokenContentByType PSCommand_Write-TokenContentByType PSFunction_Write-TokenContent_Attribute PSCommand_Write-TokenContent_Attribute PSFunction_Write-TokenContent_Command PSCommand_Write-TokenContent_Command PSFunction_Write-TokenContent_CommandArgument PSCommand_Write-TokenContent_CommandArgument PSFunction_Write-TokenContent_CommandParameter PSCommand_Write-TokenContent_CommandParameter PSFunction_Write-TokenContent_Comment PSCommand_Write-TokenContent_Comment PSFunction_Write-TokenContent_GroupEnd PSCommand_Write-TokenContent_GroupEnd PSFunction_Write-TokenContent_GroupStart PSCommand_Write-TokenContent_GroupStart PSFunction_Write-TokenContent_KeyWord PSCommand_Write-TokenContent_KeyWord PSFunction_Write-TokenContent_LoopLabel PSCommand_Write-TokenContent_LoopLabel PSFunction_Write-TokenContent_LineContinuation PSCommand_Write-TokenContent_LineContinuation PSFunction_Write-TokenContent_Member PSCommand_Write-TokenContent_Member PSFunction_Write-TokenContent_NewLine PSCommand_Write-TokenContent_NewLine PSFunction_Write-NewLine PSCommand_Write-NewLine PSFunction_Write-TokenContent_Number PSCommand_Write-TokenContent_Number PSFunction_Write-TokenContent_Operator PSCommand_Write-TokenContent_Operator PSFunction_Write-TokenContent_Position PSCommand_Write-TokenContent_Position PSFunction_Write-TokenContent_StatementSeparator PSCommand_Write-TokenContent_StatementSeparator PSFunction_Write-TokenContent_String PSCommand_Write-TokenContent_String PSFunction_Write-TokenContent_Type PSCommand_Write-TokenContent_Type PSFunction_Write-TokenContent_Variable PSCommand_Write-TokenContent_Variable PSFunction_Write-TokenContent_Unknown PSCommand_Write-TokenContent_Unknown PSFunction_Test-AddSpaceFollowingToken PSCommand_Test-AddSpaceFollowingToken PSFunction_Edit-DTWBeautifyScript PSCommand_Edit-DTWBeautifyScript PSIncludes_Function</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2022-03-01T13:42:22Z</S>
+          <S N="NormalizedVersion">1.2.5</S>
+          <S N="Authors">Dan Ward</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">PowerShell-Beautifier.nuspec|LICENSE|PowerShell-Beautifier.psd1|README.md|docs\BeforeAfterVSCode.png|docs\ChangeLog.md|docs\Compare_CaseChanges.png|docs\Compare_Whitespace.png|docs\ExternalEditors.md|docs\FAQ.md|docs\HowItWorks.md|docs\Roadmap.md|docs\Testing.md|docs\TokenizeExample.md|docs\_config.yml|src\DTW.PS.Beautifier.Main.psm1|src\DTW.PS.Beautifier.PopulateValidNames.psm1|src\DTW.PS.FileSystem.Encoding.psm1|test\Invoke-DTWBeautifyScriptTests.ps1|test\1_Input_Bad\Case\Commands.ps1|test\1_Input_Bad\Case\Members.ps1|test\1_Input_Bad\Case\ParameterAttributes.ps1|test\1_Input_Bad\Case\Parameters.ps1|test\1_Input_Bad\Case\Types.ps1|test\1_Input_Bad\CompleteFiles\Clear-PSFSitecoreRecycleBin.ps1|test\1_Input_Bad\CompleteFiles\Remove-PSFOldContent.ps1|test\1_Input_Bad\FileEncoding\ASCII_NoBOM.ps1|test\1_Input_Bad\FileEncoding\UTF16_BE_BOM.ps1|test\1_Input_Bad\FileEncoding\UTF16_BE_NoBOM.ps1|test\1_Input_Bad\FileEncoding\UTF16_LE_BOM.ps1|test\1_Input_Bad\FileEncoding\UTF16_LE_NoBOM.ps1|test\1_Input_Bad\FileEncoding\UTF8_BOM.ps1|test\1_Input_Bad\FileEncoding\UTF8_NoBOM.ps1|test\1_Input_Bad\Rename\Alias.ps1|test\1_Input_Bad\Whitespace\CmdletDefinition.ps1|test\1_Input_Bad\Whitespace\DotSource.ps1|test\1_Input_Bad\Whitespace\Indentation.ps1|test\1_Input_Bad\Whitespace\NoNewLineAtEndOfFile.ps1|test\1_Input_Bad\Whitespace\NonWindowsLineEnding.ps1|test\1_Input_Bad\Whitespace\WithinLine.ps1|test\3_Output_Correct\Case\Commands.ps1|test\3_Output_Correct\Case\Members.ps1|test\3_Output_Correct\Case\ParameterAttributes.ps1|test\3_Output_Correct\Case\Parameters.ps1|test\3_Output_Correct\Case\Types.ps1|test\3_Output_Correct\CompleteFiles\Clear-PSFSitecoreRecycleBin.ps1|test\3_Output_Correct\CompleteFiles\Remove-PSFOldContent.ps1|test\3_Output_Correct\FileEncoding\ASCII_NoBOM.ps1|test\3_Output_Correct\FileEncoding\UTF16_BE_BOM.ps1|test\3_Output_Correct\FileEncoding\UTF16_BE_NoBOM.ps1|test\3_Output_Correct\FileEncoding\UTF16_LE_BOM.ps1|test\3_Output_Correct\FileEncoding\UTF16_LE_NoBOM.ps1|test\3_Output_Correct\FileEncoding\UTF8_BOM.ps1|test\3_Output_Correct\FileEncoding\UTF8_NoBOM.ps1|test\3_Output_Correct\Rename\Alias.ps1|test\3_Output_Correct\Whitespace\CmdletDefinition.ps1|test\3_Output_Correct\Whitespace\DotSource.ps1|test\3_Output_Correct\Whitespace\Indentation_2space.ps1|test\3_Output_Correct\Whitespace\Indentation_4space.ps1|test\3_Output_Correct\Whitespace\Indentation_tab.ps1|test\3_Output_Correct\Whitespace\NoNewLineAtEndOfFile.ps1|test\3_Output_Correct\Whitespace\NonWindowsLineEnding.ps1|test\3_Output_Correct\Whitespace\WithinLine.ps1|test\Automation\Invoke-RunTestScriptInDockerCoreContainers.ps1|test\Automation\README.md</S>
+          <S N="GUID">{222A4EF8-9A04-4240-AE0C-18A0CDED5248}</S>
+          <S N="CompanyName">DTWConsulting.com</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\Users\Mark-\Documents\PowerShell\Modules\PowerShell-Beautifier\1.2.5</S>
+    </MS>
+  </Obj>
+</Objs>

@@ -1,4 +1,4 @@
-<#
+﻿<#
 SPDX-License-Identifier: MIT
 Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Main.ps1 (c) 2022

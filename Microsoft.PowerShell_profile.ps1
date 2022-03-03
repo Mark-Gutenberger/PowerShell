@@ -1,10 +1,10 @@
-<#
+﻿<#
 SPDX-License-Identifier: MIT
 Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-02-28T14:12:17.778Z
+Modified: 2022-03-03T14:19:01.449Z
 #>
 
 # Clear this if you want, I just prefer to see that Powershell didn't shit its pants right away.
@@ -113,13 +113,23 @@ else {
 Write-Host "Found profile: " -NoNewline
 Get-Location | Write-Host
 
-#custom aliases:
 function Custom-wsl {
-	(wsl.exe $args bash);
+	if ($args.Count -lt 1) {
+		C:\\Windows\\System32\\wsl.exe bash
+	}
+	elseif ($args.Contains('ubuntu')) {
+		C:\\Windows\\System32\\wsl.exe $args bash
+	}
+	elseif ($args.Contains('debian')) {
+		C:\\Windows\\System32\\wsl.exe $args
+	}
+	else {
+		C:\\Windows\\System32\\wsl.exe $args
+	}
 };
 
 Set-Alias wsl Custom-wsl;
-Set-Alias bash Custom-wsl;
+Set-Alias bash wsl;
 Set-Alias rn React-Native;
 Set-Alias ls Custom-ls;
 Set-Alias list Custom-ls;
@@ -128,11 +138,11 @@ Set-Alias list Custom-ls;
 # function Prompt() {
 # "PS $($executionContext.SessionState.Path.CurrentLocation)$( '>' * ($nestedPromptLevel + 1)) ";
 # };
-function Prompt() {
-	Write-Host($(Get-Date -Format "HH:mm:ss")) -NoNewLine -ForegroundColor white
-	Write-Host(" " + "pwsh" + " ") -NoNewLine -ForegroundColor 2 # green
-	Write-Host($(Get-Location)) -NoNewLine -ForegroundColor 1 # blue
-	Write-Host(" > ") -NoNewLine -ForegroundColor white
+function prompt () {
+	Write-Host ($(Get-Date -Format "HH:mm:ss")) -NoNewline -ForegroundColor white
+	Write-Host (" " + "pwsh" + " ") -NoNewline -ForegroundColor 2 # green
+	Write-Host ($(Get-Location)) -NoNewline -ForegroundColor 1 # blue
+	Write-Host (" > ") -NoNewline -ForegroundColor white
 	return " "
 };
 
