@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Main.ps1 (c) 2022
 Desc: description
 Created:  2022-02-24T00:34:39.695Z
-Modified: 2022-02-27T19:43:56.300Z
+Modified: 2022-03-03T16:15:42.109Z
 #>
 
 
@@ -33,7 +33,7 @@ $code_files = new_syntax (
 function getDirSize () {
 	param($dir)
 	$bytes = 0
-	Get-ChildItem $dir | ForEach-Object {
+	Get-ChildItem $dir -Force | ForEach-Object {
 		if ($_ -is [System.IO.FileInfo]) {
 			$bytes += $_.Length
 		}
