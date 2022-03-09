@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-03T14:19:01.449Z
+Modified: 2022-03-09T18:34:52.102Z
 #>
 
 # Clear this if you want, I just prefer to see that Powershell didn't shit its pants right away.
@@ -128,11 +128,16 @@ function Custom-wsl {
 	}
 };
 
+function gitempty() {
+	git commit --allow-empty -m "Empty commit"
+}
+
 Set-Alias wsl Custom-wsl;
 Set-Alias bash wsl;
 Set-Alias rn React-Native;
 Set-Alias ls Custom-ls;
 Set-Alias list Custom-ls;
+Set-Alias gitempty gitempty
 
 # custom prompt:
 # function Prompt() {
@@ -145,6 +150,8 @@ function prompt () {
 	Write-Host (" > ") -NoNewline -ForegroundColor white
 	return " "
 };
+
+Invoke-Expression (&starship init powershell)
 
 # At the very end make sure to cd back to home. (no args needed as home is teh defualt param)
 
