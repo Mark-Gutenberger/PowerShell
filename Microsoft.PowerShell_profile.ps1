@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-09T18:34:52.102Z
+Modified: 2022-03-09T23:27:27.468Z
 #>
 
 # Clear this if you want, I just prefer to see that Powershell didn't shit its pants right away.
@@ -84,6 +84,7 @@ if ($env:IsOnPlatform -eq 'Windows') {
 	# Dot in external modules
 	. .\Is-OnPlatform\Main.ps1
 	. .\ls\Main.ps1
+	. .\PSFormat\Main.ps1
 
 }
 elseif ($env:IsOnPlatform -eq 'Linux') {
@@ -91,8 +92,9 @@ elseif ($env:IsOnPlatform -eq 'Linux') {
 	# Go here
 	Set-Location ~/.config/powershell/
 	# Dot in external modules
-	. ~/.config/powershell/Is-OnPlatform/Main.ps1
-	. ~/.config/powershell/ls/Main.ps1
+	. ./Is-OnPlatform/Main.ps1
+	. ./ls/Main.ps1
+	. ./PSFormat/Main.ps1
 
 }
 elseif ($env:IsOnPlatform -eq 'Mac') {
@@ -100,8 +102,9 @@ elseif ($env:IsOnPlatform -eq 'Mac') {
 	# Go here
 	Set-Location ~/.config/powershell/
 	# Dot in external modules
-	. ~/.config/powershell/Is-OnPlatform/Main.ps1
-	. ~/.config/powershell/ls/Main.ps1
+	. ./Is-OnPlatform/Main.ps1
+	. ./ls/Main.ps1
+	. ./PSFormat/Main.ps1
 }
 else {
 	Write-Host "You have fucked up! 👏"
@@ -128,7 +131,7 @@ function Custom-wsl {
 	}
 };
 
-function gitempty() {
+function Create-Empty-Commit () {
 	git commit --allow-empty -m "Empty commit"
 }
 
@@ -137,21 +140,20 @@ Set-Alias bash wsl;
 Set-Alias rn React-Native;
 Set-Alias ls Custom-ls;
 Set-Alias list Custom-ls;
-Set-Alias gitempty gitempty
+Set-Alias gitempty Create-Empty-Commit;
+Set-Alias PSFormat PS-Format;
 
 # custom prompt:
 # function Prompt() {
 # "PS $($executionContext.SessionState.Path.CurrentLocation)$( '>' * ($nestedPromptLevel + 1)) ";
 # };
-function prompt () {
-	Write-Host ($(Get-Date -Format "HH:mm:ss")) -NoNewline -ForegroundColor white
-	Write-Host (" " + "pwsh" + " ") -NoNewline -ForegroundColor 2 # green
-	Write-Host ($(Get-Location)) -NoNewline -ForegroundColor 1 # blue
-	Write-Host (" > ") -NoNewline -ForegroundColor white
-	return " "
+function Invoke-Starship-PreCommand {
+	$host.UI.Write("`e]0;$pwd`a")
 };
 
-Invoke-Expression (&starship init powershell)
+Invoke-Starship-PreCommand
+
+Invoke-Expression (& starship init powershell)
 
 # At the very end make sure to cd back to home. (no args needed as home is teh defualt param)
 
