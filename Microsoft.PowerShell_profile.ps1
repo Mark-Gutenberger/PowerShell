@@ -91,7 +91,7 @@ function Format-PSFormat () {
 };
 Set-Alias PSFormat Format-PSFormat;
 Set-Alias PS-Format Format-PSFormat;
-
+Set-Alias MSEdge MicrosoftEdge.exe;
 <# *
    * Starship stuff
    * #>
