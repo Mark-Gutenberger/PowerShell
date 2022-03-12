@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-10T03:57:06.856Z
+Modified: 03/12/2022 23:14:01
 #>
 <# *
    * Self explanatory...
@@ -92,6 +92,12 @@ function Format-PSFormat () {
 Set-Alias PSFormat Format-PSFormat;
 Set-Alias PS-Format Format-PSFormat;
 Set-Alias MSEdge MicrosoftEdge.exe;
+Function Invoke-Color-Ls () {
+	colorls -a $Args
+};
+Set-Alias ls Invoke-Color-Ls
+Set-Alias list Invoke-Color-Ls
+
 <# *
    * Starship stuff
    * #>
