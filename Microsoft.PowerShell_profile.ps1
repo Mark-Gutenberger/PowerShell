@@ -93,7 +93,7 @@ Set-Alias PSFormat Format-PSFormat;
 Set-Alias PS-Format Format-PSFormat;
 Set-Alias MSEdge MicrosoftEdge.exe;
 Function Invoke-Color-Ls () {
-	colorls -a $Args
+	colorls -a -sd -gs $Args
 };
 Set-Alias ls Invoke-Color-Ls
 Set-Alias list Invoke-Color-Ls
