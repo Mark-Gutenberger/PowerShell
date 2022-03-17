@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 03/12/2022 23:14:01
+Modified: 2022-03-17T21:20:55.717Z
 #>
 <# *
    * Self explanatory...
@@ -103,7 +103,9 @@ Set-Alias list Invoke-Color-Ls
    * #>
 function Invoke-Starship-PreCommand {
 	$host.UI.Write("`e]0;$pwd`a")
+	# $host.ui.Write("pwsh | ") # Depreciated, use the config file instead to print the shell.
 };
+
 Invoke-Starship-PreCommand
 Invoke-Expression (& starship init powershell)
 
