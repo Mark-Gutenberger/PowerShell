@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-17T21:20:55.717Z
+Modified: 2022-03-22T12:45:03.564Z
 #>
 <# *
    * Self explanatory...
@@ -70,11 +70,14 @@ function Get-Platform {
 	};
 };
 
-function Import-External-Scripts () {
+function Import-ExternalScripts () {
 	if ($env:IsOnPlatform -eq 'Windows') {
 		Set-Location -Path $env:userprofile\Documents\PowerShell\
 	}
-	elseif ($env:IsOnPlatform -eq 'Linux||Mac') {
+	elseif ($env:IsOnPlatform -eq 'Linux') {
+		Set-Location ~/.config/powershell/
+	}
+	elseif ($env:IsOnPlatform -eq 'Mac') {
 		Set-Location ~/.config/powershell/
 	}
 	else {
@@ -117,7 +120,7 @@ function Main () {
 	# Write-Host $(pwsh --version) # pwsh does this by default
 	Write-Host "Platform: " -NoNewline
 	Get-Platform
-	Import-External-Scripts
+	Import-ExternalScripts
 	Set-Location
 };
 Main
