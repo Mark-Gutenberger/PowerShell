@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-22T14:34:32.726Z
+Modified: 2022-03-22T14:36:58.490Z
 #>
 
 function Get-Platform {
@@ -143,12 +143,12 @@ function Config () {
 	}
 	# Validate the config file.
 	# if it is empty or the first line is invalid json, store "{}"
-	$config_content = $(Get-Content -Path Config.json)
+	$config_content = $(Get-Content -Path config.json)
 	if ($config_content -eq "" -or " " -or "  " -or "   ") {
-		Set-Content -Path Config.json -Value "{}"
+		Set-Content -Path config.json -Value "{}"
 	}
 	elseif ($($config_content.Count) -gt 1 -and $($config_content[0]) -ne "{" -or "{}") {
-		Set-Content -Path Config.json -Value "{}"
+		Set-Content -Path config.json -Value "{}"
 	}
 	#endif
 
