@@ -4,7 +4,8 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-03-22T14:36:58.490Z
+
+Modified: 2022-03-23T23:58:17.212Z
 #>
 
 function Get-Platform {
@@ -123,38 +124,40 @@ function Config () {
 		Set-Location -Path $PSDir
 	}
 	elseif ($env:IsOnPlatform -eq 'Linux' -or 'Mac') {
-		$global:PSDir = "~/.config/powershell/"
+		[string]$global:PSDir = "~/.config/powershell/"
 		Set-Location -Path $PSDir
 	}
 	else {
 		return $false
-		Write-Host "Error, prehaps pwsh is not installed correctly or you are running a custom environment."
-		Write-Host "Check out this file at '$PSDir' if you want to debug."
+		Write-Host "Error: prehaps pwsh is not installed correctly or you are running a custom environment." -Foregroundcolor Red
+		Write-Host "Check out this file at '$PSDir' if you want to debug." -Foregroundcolor Red
 		exit 0;
 	};
 	#endif
 	# Get the config file.
 	# if it doesn't exist, create it.
-	$config_file = 'config.json'
+	$config_file = 'config.json' # REMINDER: Linux && OSX are CASE SENSITIVE.
+	$config_file = $PSDir + $config_file
 	if (!(Test-Path $config_file)) {
-		New-Item -path . -name $config_file -type "file" -value ""
-		Write-Host ""
-		Write-Host "Couldn't find config file. Creating one now."
+		Write-Host "`nCouldn't find config file. Creating one now at:`n`n  '$config_file'`n`n" -ForegroundColor yellow
+		New-Item -path $config_file -type "file" -value "{}" -Force
 	}
-	# Validate the config file.
-	# if it is empty or the first line is invalid json, store "{}"
-	$config_content = $(Get-Content -Path config.json)
-	if ($config_content -eq "" -or " " -or "  " -or "   ") {
-		Set-Content -Path config.json -Value "{}"
-	}
-	elseif ($($config_content.Count) -gt 1 -and $($config_content[0]) -ne "{" -or "{}") {
-		Set-Content -Path config.json -Value "{}"
-	}
-	#endif
+	[string]$config_json = $(Get-Content -Path $config_file -Raw -Force)
 
 	function Read-Config () {
+		if ($(Test-Json $config_json)) {
+			# do good stuff here...
+			$config_content = $(ConvertFrom-Json -InputObject $config_json -AsHashtable)
+			Write-Output $config_content
 
+		}
+		else {
+			Write-Host "Error: Invalid JSON in config file. `nRewriting file & archiving old file to `n  '$PSDir`config.invalid.json'." -ForegroundColor red
+			New-Item -path $PSDir -name "config.invalid.json" -type "file" -value $config_json -Force
+			New-Item -path $config_file -type "file" -value "{}" -Force
+		}
 	}
+	Read-Config
 
 	# cd back to where ever you were before running the script.
 	Set-Location $current_location
@@ -168,10 +171,10 @@ function Invoke-Config () {
    * Main
    * #>
 function Main () {
-	Get-Date -Format MM/dd/yyyy` -` HH:mm:ss
+	Get-Date -Format MM/dd/yyyy` -` HH:mm:ss | Write-Host -ForegroundColor DarkGray
 	# Write-Host $(pwsh --version) # pwsh does this by default
 	Write-Host "Platform: " -NoNewline
-	Get-Platform
+	Get-Platform | Write-Host -ForegroundColor blue
 	# Import-Scripts
 	Invoke-Config
 	Set-Location
