@@ -5,7 +5,7 @@ Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
 
-Modified: 2022-03-23T23:58:17.212Z
+Modified: 04/08/2022 02:57:13
 #>
 
 function Get-Platform {
@@ -100,6 +100,11 @@ Function Invoke-ColorLs () {
 };
 Set-Alias ls Invoke-ColorLs
 Set-Alias list Invoke-ColorLs
+function Invoke-Batstat () {
+	WMIC PATH Win32_Battery Get EstimatedChargeRemaining
+};
+Set-Alias batstat Invoke-Batstat
+Set-Alias battery Invoke-Batstat
 
 <# *
    * Starship stuff
@@ -109,7 +114,7 @@ function Invoke-Starship-PreCommand {
 };
 
 Invoke-Starship-PreCommand
-Invoke-Expression (& starship init powershell)
+Invoke-Expression (& starship init powershell) #DevSkim: ignore DS104456 until 2022-05-07
 
 <# *
    * Config
