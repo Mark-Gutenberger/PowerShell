@@ -4,8 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-
-Modified: 04/08/2022 02:57:13
+Modified: 2022-04-08T14:53:51.823Z
 #>
 
 function Get-Platform {
@@ -87,8 +86,35 @@ function Get-Platform {
 # };
 
 <# *
+   * Admin
+   * #>
+
+function Invoke-Admin () {
+	if ($Args.Count -eq 0) {
+		Write-Host "Error: No arguments passed" -ForegroundColor Yellow
+		return $null
+	}
+	elseif ($Args.Count -ge 2) {
+		Write-Host "Error: Multiple arguments not yet supported" -ForegroundColor Yellow
+		return $null
+ }
+	else {
+		# convert args to string
+		$args_ = $Args[0].ToString()
+		try {
+			Start-Process $args_ -Verb runAs
+		}
+		catch {
+			Write-Host  "Error: No batch operation, program, or executable matching the pattern of ``$args_`` found...`nEnsure the path is correct or that it is accessible from your PATH variable." -ForegroundColor Red
+			return $null
+		};
+	};
+};
+<# *
    * Alias declarations:
    * #>
+Set-Alias time Get-Date
+Set-Alias Admin Invoke-Admin
 function Format-PSFormat () {
 	Get-ChildItem -Path .\ -Include *.ps1, *.psm1 -Recurse | Edit-DTWBeautifyScript -IndentType Tabs
 };
@@ -115,6 +141,9 @@ function Invoke-Starship-PreCommand {
 
 Invoke-Starship-PreCommand
 Invoke-Expression (& starship init powershell) #DevSkim: ignore DS104456 until 2022-05-07
+
+
+
 
 <# *
    * Config
