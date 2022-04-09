@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-04-08T14:53:51.823Z
+Modified: 2022-04-09T20:39:55.210Z
 #>
 
 function Get-Platform {
@@ -131,19 +131,20 @@ function Invoke-Batstat () {
 };
 Set-Alias batstat Invoke-Batstat
 Set-Alias battery Invoke-Batstat
+Set-Alias WinTerm wt
 
 <# *
    * Starship stuff
    * #>
 function Invoke-Starship-PreCommand {
 	$host.UI.Write("`e]0;$pwd`a")
+	# $host.ui.Write("🚀")
 };
 
 Invoke-Starship-PreCommand
 Invoke-Expression (& starship init powershell) #DevSkim: ignore DS104456 until 2022-05-07
-
-
-
+# please do not configure the cli or PS1 here.
+# use the starship default config file.
 
 <# *
    * Config

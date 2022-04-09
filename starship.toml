@@ -1,0 +1,137 @@
+# scan_timeout =
+add_newline = false
+format = "$custom| $all"
+
+[custom]
+disabled = false
+
+[custom.Windows]
+os = "windows"
+symbol = "  "
+when = '[ "$IsOnPlatform" == "Windows" ]'
+command = "echo 'Windows'"
+shell = "sh" # you dont need fancy shit. we want speed.
+style = "bold blue"
+format = "[$symbol($output )]($style)"
+
+[custom.Linux]
+os = "linux"
+symbol = " "
+when = '[ "$IsOnPlatform" == "Linux" ]'
+command = "echo 'Linux'"
+shell = "sh"
+style = "bold blue"
+format = "[$symbol($output )]($style)"
+
+[custom.OSX]
+os = "mac"
+symbol = " "
+when = '[ "$IsOnPlatform" == "Darwin" ]'
+command = "echo 'Mac'"
+shell = "sh"
+style = "bold blue"
+format = "[$symbol($output )]($style)"
+
+[custom.iOS]
+os = "ios"
+symbol = " "
+when = '[ "$IsOnPlatform" == "iOS" ]'
+command = "echo 'iOS'"
+shell = "sh"
+style = "bold blue"
+format = "[$symbol($output )]($style)"
+
+[custom.Android]
+os = "android"
+symbol = " "
+when = '[ "$IsOnPlatform" == "Android" ]'
+command = "echo 'Android'"
+shell = "sh"
+style = "bold blue"
+format = "[$symbol($output )]($style)"
+
+[sudo]
+style = "bold green"
+symbol = "🧙‍♂️"
+disabled = false
+allow_windows = true
+
+
+[[battery.display]]
+threshold = 25
+style = "bold red"
+
+
+[shell]
+fish_indicator = "🐠fish"
+bash_indicator = "bash"
+powershell_indicator = "pwsh"
+unknown_indicator = "mystery shell"
+# style = "cyan bold"
+disabled = false
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+
+[aws]
+symbol = " "
+
+
+[azure]
+disabled = false
+format = "on [$symbol($subscription)]($style) "
+symbol = "ﴃ "
+style = "blue bold"
+
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[rust]
+symbol = " "
