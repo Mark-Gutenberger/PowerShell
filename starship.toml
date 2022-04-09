@@ -8,25 +8,25 @@ disabled = false
 [custom.Windows]
 os = "windows"
 symbol = "  "
-when = '[ "$IsOnPlatform" == "Windows" ]'
+when = '[ "$IsOnPlatform0" == 0 ]'
 command = "echo 'Windows'"
-shell = "sh" # you dont need fancy shit. we want speed.
+shell = "sh" # necessary for eficiency on windows. other shells are too bloated...
 style = "bold blue"
 format = "[$symbol($output )]($style)"
 
 [custom.Linux]
 os = "linux"
 symbol = " "
-when = '[ "$IsOnPlatform" == "Linux" ]'
+when = '[ "$IsOnPlatform0" == 1 ]'
 command = "echo 'Linux'"
-shell = "sh"
+# shell = "bash"
 style = "bold blue"
 format = "[$symbol($output )]($style)"
 
 [custom.OSX]
 os = "mac"
 symbol = " "
-when = '[ "$IsOnPlatform" == "Darwin" ]'
+when = '[ "$IsOnPlatform0" == 2 ]'
 command = "echo 'Mac'"
 shell = "sh"
 style = "bold blue"
