@@ -4,7 +4,7 @@ Author: Mark Gutenberger <mark-gutenberger@outlook.com>
 Microsoft.Powershell_profile.ps1 (c) 2022
 Desc: description
 Created:  2022-02-12T00:34:39.695Z
-Modified: 2022-04-09T20:39:55.210Z
+Modified: 2022-04-18T04:07:34.616Z
 #>
 
 function Get-Platform {
@@ -122,7 +122,13 @@ Set-Alias PSFormat Format-PSFormat;
 Set-Alias PS-Format Format-PSFormat;
 Set-Alias MSEdge MicrosoftEdge.exe;
 Function Invoke-ColorLs () {
-	colorls -a --sd $Args
+ # TODO: continue working on this...
+	if (Test-Path './.git/') {
+		return colorls -A --gs --sd $Args
+	}
+	else {
+		return colorls -A --sd $Args
+	};
 };
 Set-Alias ls Invoke-ColorLs
 Set-Alias list Invoke-ColorLs
