@@ -1,92 +1,161 @@
 #! ~/.config/starship.toml
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = false
-format = "$custom| $all"
+command_timeout = 2000
+scan_timeout = 500
 
-# [custom]
-# disabled = false
+# format = """
+# [┌───────────────────>](bold green)
+# [│](bold green)$directory$rust$package
+# [└─>](bold green) """
 
-[custom.Windows]
-os = "windows"
-symbol = "  "
-when = '[ "$IsOnPlatform0" == 0 ]'
-command = "echo 'Windows'"
-shell = "sh" # necessary for eficiency on windows. other shells are too bloated...
-style = "bold blue"
-format = "[$symbol($output )]($style)"
+format = """
+[$time on ${custom.OS}](bold white) $memory_usage$cmd_duration
+$battery| \
+$sudo$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$docker_context\
+$aws$gcloud$openstack$azure$container$kubernetes\
+$package\
+$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$buf$c$cmake$cobol$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$crystal$vlang$spack$vagrant$zig$nix_shell$conda\
+$env_var\
+$jobs\
+$status
+$shell$character"""
 
-[custom.Linux]
-os = "linux"
-symbol = " "
-when = '[ "$IsOnPlatform0" == 1 ]'
-command = "echo 'Linux'"
-# shell = "bash"
-style = "bold blue"
-format = "[$symbol($output )]($style)"
-
-[custom.OSX]
-os = "mac"
-symbol = " "
-when = '[ "$IsOnPlatform0" == 2 ]'
-command = "echo 'Mac'"
+[custom.OS]
+disabled = false
+when = true
+command = "echo $OS"
 shell = "sh"
-style = "bold blue"
-format = "[$symbol($output )]($style)"
+style = "bold 25"
+format = "[$output]($style)"
 
-[custom.iOS]
-os = "ios"
-symbol = " "
-when = '[ "$IsOnPlatform" == "iOS" ]'
-command = "echo 'iOS'"
-shell = "sh"
-style = "bold blue"
-format = "[$symbol($output )]($style)"
 
-[custom.Android]
-os = "android"
-symbol = " "
-when = '[ "$IsOnPlatform" == "Android" ]'
-command = "echo 'Android'"
-shell = "sh"
-style = "bold blue"
-format = "[$symbol($output )]($style)"
+[time]
+style = "bold 244"
+disabled = false
+format = '[$time]($style)'
+time_format = "%T"
+utc_time_offset = "-5"
 
 [sudo]
-style = "bold green"
-symbol = "🧙‍♂️"
+style = "bold 58"
+symbol = "  "
 disabled = false
 allow_windows = true
+format = "[$symbol]($style)"
+
+[username]
+disabled = false
+style_root = "bold 58"
+format = "[  ]($style)"
 
 [c]
 disabled = false
-detect_extensions = ["h", "hh", "hpp", "H", "HH", "HPP", "c", "cc", "cpp", "C", "CC", "CPP"]
-# format = "via [$name $version]($style)"
+symbol = " "
+style = "bold 206"
+detect_extensions = ["h", "hh", "hpp", "H", "HH", "HPP", "c", "cc", "cpp", "C", "CC", "CPP", "CXX", "cxx", "hxx","HXX"]
+format = "via [$symbol($name )]($style)"
+
+# [battery]
+# style = "bold green"
+# unknown_symbol = " "
+# full_symbol = " "
+# discharging_symbol = " "
+# charging_symbol = " "
 
 [[battery.display]]
-threshold = 25
+threshold = 10
 style = "bold red"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 20
+style = "bold red"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 30
+style = "bold 202"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 40
+style = "bold 214"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 60
+style = "bold 190"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 70
+style = "bold 190"
+discharging_symbol = " "
+charging_symbol =" "
+[[battery.display]]
+threshold = 80
+style = "bold green"
+discharging_symbol = " "
+charging_symbol = " "
+[[battery.display]]
+threshold = 90
+style = "bold green"
+discharging_symbol = " "
+charging_symbol = " "
+[[battery.display]]
+threshold = 100
+style = "bold green"
+discharging_symbol = " "
+charging_symbol = " "
 
+
+[memory_usage]
+disabled = false
+threshold = 85
+symbol = " "
+style = "bold dimmed green"
+format = "[$symbol ${ram_pct}]($style) "
+
+[directory]
+truncation_length = 5
+use_os_path_sep = true
+truncation_symbol = " "
 
 [shell]
-fish_indicator = "🐠fish"
+fish_indicator = "fish"
 bash_indicator = "bash"
+cmd_indicator = "cmd"
 powershell_indicator = "pwsh"
 unknown_indicator = "mystery shell"
 # style = "cyan bold"
 disabled = false
 
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[>](bold red)"
+success_symbol = "[﬌](bold green)"
+error_symbol = "[﬌](bold red)"
+
+# [cmd_duration]
+# min_time = 1000
+# show_notifications = true
+# min_time_to_notify = 30_000
+# format = "took [$duration]($style)"
 
 [aws]
 symbol = " "
-
-
-[azure]
-disabled = false
-format = "on [$symbol($subscription)]($style) "
-symbol = "ﴃ "
-style = "blue bold"
 
 
 # [conda]
@@ -107,7 +176,11 @@ style = "blue bold"
 # [elm]
 # symbol = " "
 
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
 [git_branch]
+style = "bold 164"
 symbol = " "
 
 # [golang]
@@ -144,6 +217,7 @@ symbol = " "
 format = "via [$symbol]($style)"
 
 [cmake]
+symbol = "喝 "
 format = "via [$symbol]($style)"
 
 [cobol]
@@ -189,6 +263,7 @@ format = 'via [$symbol]($style)'
 format = 'via [$symbol]($style)'
 
 [nodejs]
+style = "bold green"
 format = 'via [$symbol]($style)'
 
 [ocaml]
