@@ -23,10 +23,12 @@ function Invoke-Admin () {
 };
 
 Set-Alias Admin Invoke-Admin
-Set-Alias MSEdge MicrosoftEdge.exe;
-# function Invoke-Batstat () {
-# 	WMIC PATH Win32_Battery Get EstimatedChargeRemaining
-# };
+Set-Alias Edge MicrosoftEdge.exe;
+
+function Invoke-Batstat () {
+	WMIC PATH Win32_Battery Get EstimatedChargeRemaining
+};
+
 Set-Alias Batstat Invoke-Batstat
 Set-Alias Battery Invoke-Batstat
 Set-Alias WinTerm wt

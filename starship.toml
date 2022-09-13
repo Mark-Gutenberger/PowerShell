@@ -61,7 +61,24 @@ format = "[  ]($style)"
 disabled = false
 symbol = " "
 style = "bold 206"
-detect_extensions = ["h", "hh", "hpp", "H", "HH", "HPP", "c", "cc", "cpp", "C", "CC", "CPP", "CXX", "cxx", "hxx","HXX"]
+detect_extensions = [
+	"h",
+	"hh",
+	"hpp",
+	"H",
+	"HH",
+	"HPP",
+	"c",
+	"cc",
+	"cpp",
+	"C",
+	"CC",
+	"CPP",
+	"CXX",
+	"cxx",
+	"hxx",
+	"HXX",
+]
 format = "via [$symbol($name )]($style)"
 
 # [battery]
@@ -75,37 +92,37 @@ format = "via [$symbol($name )]($style)"
 threshold = 10
 style = "bold red"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 20
 style = "bold red"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 30
 style = "bold 202"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 40
 style = "bold 214"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 50
 style = "bold yellow"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 60
 style = "bold 190"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 70
 style = "bold 190"
 discharging_symbol = " "
-charging_symbol =" "
+charging_symbol = " "
 [[battery.display]]
 threshold = 80
 style = "bold green"
