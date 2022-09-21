@@ -1,4 +1,5 @@
-﻿Import-Module PSReadLine
+﻿Import-Module -Name PSReadLine
+Import-Module -Name CompletionPredictor
 
 $env:PYTHONIOENCODING = "utf-8"
 
@@ -6,10 +7,10 @@ function Invoke-Admin () {
 	if ($Args.Count -eq 0) {
 		return $null
 	}
-	elseif ($Args.Count -ge 2) {
+ elseif ($Args.Count -ge 2) {
 		return $null
- }
-	else {
+	}
+ else {
 		# convert args to string
 		$args_ = $Args[0].ToString()
 		try {
@@ -40,7 +41,7 @@ function Invoke-ls() {
 	try {
 		& $ls -a $Args
 	}
-	catch {
+ catch {
 		Write-Host "Error: No batch operation, program, or executable matching the pattern of ``$ls`` found...`n Please edit your powershell profile and update the variable" -ForegroundColor Yellow
 		Get-ChildItem $Args
 	}
@@ -59,7 +60,7 @@ Invoke-Expression "$(thefuck --alias)"
 # Config PSReadLine
 Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineOption -PredictionSource History
+# Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 # `ForwardChar` accepts the entire suggestion text when the cursor is at the end of the line.
@@ -99,3 +100,5 @@ Set-PSReadLineKeyHandler -Key Tab `
 		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion($key, $arg)
 	}
 }
+
+Set-Alias lvim "C:\Users\Mark-\documents\powershell\lvim\lvim.ps1"
