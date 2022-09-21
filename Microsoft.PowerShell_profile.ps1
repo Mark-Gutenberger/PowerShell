@@ -1,12 +1,12 @@
-﻿$env:PYTHONIOENCODING="utf-8"
+﻿Import-Module PSReadLine
+
+$env:PYTHONIOENCODING = "utf-8"
 
 function Invoke-Admin () {
 	if ($Args.Count -eq 0) {
-		Write-Host "Error: No arguments passed" -ForegroundColor Yellow
 		return $null
 	}
 	elseif ($Args.Count -ge 2) {
-		Write-Host "Error: Multiple arguments not yet supported" -ForegroundColor Yellow
 		return $null
  }
 	else {
@@ -23,7 +23,6 @@ function Invoke-Admin () {
 };
 
 Set-Alias Admin Invoke-Admin
-Set-Alias Edge MicrosoftEdge.exe;
 
 function Invoke-Batstat () {
 	WMIC PATH Win32_Battery Get EstimatedChargeRemaining
@@ -31,28 +30,72 @@ function Invoke-Batstat () {
 
 Set-Alias Batstat Invoke-Batstat
 Set-Alias Battery Invoke-Batstat
+
 Set-Alias WinTerm wt
 
 function Invoke-ls() {
 	# wrapper for ls command
-	C:\Users\Mark-\source\lsd\target\debug\lsd.exe -a $Args
-
+	$ls = "C:\Users\Mark-\source\lsd\target\debug\lsd.exe"
+	# run lsd
+	try {
+		& $ls -a $Args
+	}
+	catch {
+		Write-Host "Error: No batch operation, program, or executable matching the pattern of ``$ls`` found...`n Please edit your powershell profile and update the variable" -ForegroundColor Yellow
+		Get-ChildItem $Args
+	}
 };
 Set-Alias ls Invoke-ls
 
+# set for starship
 $OS = $env:OS
 Set-Alias $OS $env:OS
+Invoke-Expression (& starship init powershell)
 
 $host.UI.Write("`e]0;$pwd`a")
-# $host.ui.Write("🚀")
 
 Invoke-Expression "$(thefuck --alias)"
 
-Invoke-Expression (& starship init powershell)
-# please do not configure the cli or PS1 here.
-# use the starship default config file.
+# Config PSReadLine
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# `ForwardChar` accepts the entire suggestion text when the cursor is at the end of the line.
+# This custom binding makes `RightArrow` behave similarly - accepting the next word instead of the entire suggestion text.
+Set-PSReadLineKeyHandler -Key RightArrow `
+	-BriefDescription ForwardCharAndAcceptNextSuggestionWord `
+	-LongDescription "Move cursor one character to the right in the current editing line and accept the next word in suggestion when it's at the end of current editing line" `
+	-ScriptBlock {
+	param($key, $arg)
 
+	$line = $null
+	$cursor = $null
+	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
 
-# Get-Date -Format MM/dd/yyyy` -` HH:mm:ss | Write-Host -ForegroundColor DarkGray
-# Write-Host $(pwsh --version)
-Set-Location ~
+	if ($cursor -lt $line.Length) {
+		[Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+	}
+ else {
+		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
+	}
+}
+
+Set-PSReadLineKeyHandler -Key Tab `
+	-BriefDescription ForwardCharAndAcceptNextSuggestionWord `
+	-LongDescription "Move cursor one character to the right in the current editing line and accept the next word in suggestion when it's at the end of current editing line" `
+	-ScriptBlock {
+	param($key, $arg)
+
+	$line = $null
+	$cursor = $null
+	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+	if ($cursor -lt $line.Length) {
+		[Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+	}
+ else {
+		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion($key, $arg)
+	}
+}
