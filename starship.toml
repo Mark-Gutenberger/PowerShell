@@ -6,21 +6,15 @@ add_newline = false
 command_timeout = 2000
 scan_timeout = 500
 
-# format = """
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) """
-
 format = """
-[$time on ${custom.OS}](bold white) $memory_usage$cmd_duration
-$battery| \
+
+[$time on ${custom.OS} · $localip](bold white)$memory_usage$cmd_duration
+$battery\
 $sudo$username\
 $hostname\
-$localip\
 $shlvl\
 $singularity\
-$directory\
-$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$docker_context\
+[\\[](underline fg:213)[ ]()$directory$git_branch$git_commit$git_state$git_status$hg_branch$docker_context[\\]](underline fg:213)[ ]()\
 $aws$gcloud$openstack$azure$container$kubernetes\
 $package\
 $dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$buf$c$cmake$cobol$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$crystal$vlang$spack$vagrant$zig$nix_shell$conda\
@@ -34,59 +28,52 @@ disabled = false
 when = true
 command = "echo $OS"
 shell = "sh"
-style = "bold 25"
+style = "bold 26"
 format = "[$output]($style)"
 
 
 [time]
-style = "bold 244"
+style = "bold 250"
 disabled = false
-format = '[$time]($style)'
-time_format = "%T"
+format = '[﨟$time]($style)'
+time_format = "%a %b %d %T"
 utc_time_offset = "-5"
 
 [sudo]
-style = "bold 58"
-symbol = "  "
+style = "bold 166"
+symbol = " "
 disabled = false
 allow_windows = true
 format = "[$symbol]($style)"
 
 [username]
 disabled = false
-style_root = "bold 58"
-format = "[  ]($style)"
+style_root = "bold 166"
+format = "[ ]($style)"
 
 [c]
 disabled = false
 symbol = " "
 style = "bold 206"
 detect_extensions = [
-	"h",
-	"hh",
-	"hpp",
-	"H",
-	"HH",
-	"HPP",
-	"c",
-	"cc",
-	"cpp",
-	"C",
-	"CC",
-	"CPP",
-	"CXX",
-	"cxx",
-	"hxx",
-	"HXX",
+"h",
+"hh",
+"hpp",
+"H",
+"HH",
+"HPP",
+"c",
+"cc",
+"cpp",
+"C",
+"CC",
+"CPP",
+"CXX",
+"cxx",
+"hxx",
+"HXX",
 ]
 format = "via [$symbol($name )]($style)"
-
-# [battery]
-# style = "bold green"
-# unknown_symbol = " "
-# full_symbol = " "
-# discharging_symbol = " "
-# charging_symbol = " "
 
 [[battery.display]]
 threshold = 10
@@ -139,13 +126,12 @@ style = "bold green"
 discharging_symbol = " "
 charging_symbol = " "
 
-
 [memory_usage]
 disabled = false
 threshold = 85
 symbol = " "
 style = "bold dimmed green"
-format = "[$symbol ${ram_pct}]($style) "
+format = "[ $symbol ${ram_pct}]($style) "
 
 [directory]
 truncation_length = 5
@@ -158,77 +144,38 @@ bash_indicator = "bash"
 cmd_indicator = "cmd"
 powershell_indicator = "pwsh"
 unknown_indicator = "mystery shell"
-# style = "cyan bold"
 disabled = false
 
 [character]
-success_symbol = "[﬌](bold green)"
-error_symbol = "[﬌](bold red)"
-
-# [cmd_duration]
-# min_time = 1000
-# show_notifications = true
-# min_time_to_notify = 30_000
-# format = "took [$duration]($style)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
 
 [aws]
 symbol = " "
 
-
-# [conda]
-# symbol = " "
-
-# [dart]
-# symbol = " "
-
-# [directory]
-# read_only = " "
-
-# [docker_context]
-# symbol = " "
-
-# [elixir]
-# symbol = " "
-
-# [elm]
-# symbol = " "
-
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "C"
+ahead = ""
+behind = ""
+diverged = ""
+up_to_date = ""
+untracked = "U"
+stashed = "$"
+modified = "M"
+staged = "+"
+renamed = "R"
+deleted = "D"
+ignore_submodules = false
+disabled =	false
+format = '[$conflicted](bold red)[$untracked](bold 34)[$stashed](bold 178)[$modified](bold 178)[$staged](bold 34)[$renamed](bold 178)[$deleted](bold red)[$ahead_behind](bold purple)[ ]()'
 
 [git_branch]
 style = "bold 164"
 symbol = " "
-
-# [golang]
-# symbol = " "
-
-# [hg_branch]
-# symbol = " "
-
-# [java]
-# symbol = " "
-
-# [julia]
-# symbol = " "
-
-# [memory_usage]
-# symbol = " "
-
-# [nim]
-# symbol = " "
-
-# [nix_shell]
-# symbol = " "
-
-# [nodejs]
-# symbol = " "
-
-[package]
-symbol = " "
-
-# [rust]
-# symbol = " "
+truncation_length = 20
+truncation_symbol = "…"
+always_show_remote = true
+format = "on [$symbol$branch(:$remote_branch)]($style) "
 
 [buf]
 format = "via [$symbol]($style)"
@@ -282,6 +229,9 @@ format = 'via [$symbol]($style)'
 [nodejs]
 style = "bold green"
 format = 'via [$symbol]($style)'
+detect_extensions = []
+detect_files =	["package.json", "package-lock.json", "yarn.lock"]
+detect_folders =	["node_modules"]
 
 [ocaml]
 format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
@@ -324,3 +274,9 @@ format = 'via [$symbol]($style)'
 
 [zig]
 format = 'via [$symbol]($style)'
+
+[localip]
+ssh_only = false
+format = "[$localipv4](bold 26) "
+disabled = false
+
