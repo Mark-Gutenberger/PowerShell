@@ -41,10 +41,9 @@ utc_time_offset = "-5"
 
 [sudo]
 style = "bold 166"
-symbol = " "
 disabled = false
 allow_windows = true
-format = "[$symbol]($style)"
+format = "[ ]($style)"
 
 [username]
 disabled = false
@@ -165,7 +164,7 @@ modified = "M"
 staged = "+"
 renamed = "R"
 deleted = "D"
-ignore_submodules = false
+ignore_submodules = true
 disabled =	false
 format = '[$conflicted](bold red)[$untracked](bold 34)[$stashed](bold 178)[$modified](bold 178)[$staged](bold 34)[$renamed](bold 178)[$deleted](bold red)[$ahead_behind](bold purple)[ ]()'
 

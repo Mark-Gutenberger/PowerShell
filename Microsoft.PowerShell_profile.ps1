@@ -3,23 +3,20 @@ Import-Module -Name CompletionPredictor
 
 $env:PYTHONIOENCODING = "utf-8"
 
-function Invoke-Admin ()
-{
-  if ($Args.Count -eq 0)
-  {
+function Invoke-Admin () {
+  if ($Args.Count -eq 0) {
     return $null
-  } elseif ($Args.Count -ge 2)
-  {
+  }
+  elseif ($Args.Count -ge 2) {
     return $null
-  } else
-  {
+  }
+  else {
     # convert args to string
     $args_ = $Args[0].ToString()
-    try
-    {
+    try {
       Start-Process $args_ -Verb runAs
-    } catch
-    {
+    }
+    catch {
       Write-Host  "Error: No batch operation, program, or executable matching the pattern of ``$args_`` found...`nEnsure the path is correct or that it is accessible from your PATH variable." -ForegroundColor Red
       return $null
     };
@@ -28,8 +25,7 @@ function Invoke-Admin ()
 
 Set-Alias Admin Invoke-Admin
 
-function Invoke-Batstat ()
-{
+function Invoke-Batstat () {
   WMIC PATH Win32_Battery Get EstimatedChargeRemaining
 };
 
@@ -38,16 +34,14 @@ Set-Alias Battery Invoke-Batstat
 
 Set-Alias WinTerm wt
 
-function Invoke-ls()
-{
+function Invoke-ls() {
   # wrapper for ls command
-  $ls = "C:\Users\Mark-\source\lsd\target\debug\lsd.exe"
+  $ls = "C:\Users\Mark-\dev\lsd\target\debug\lsd.exe"
   # run lsd
-  try
-  {
-    & $ls -a $Args
-  } catch
-  {
+  try {
+    & $ls -A $Args
+  }
+  catch {
     Write-Host "Error: No batch operation, program, or executable matching the pattern of ``$ls`` found...`n Please edit your powershell profile and update the variable" -ForegroundColor Yellow
     Get-ChildItem $Args
   }
@@ -81,11 +75,10 @@ Set-PSReadLineKeyHandler -Key Shift+RightArrow `
   $cursor = $null
   [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
 
-  if ($cursor -lt $line.Length)
-  {
+  if ($cursor -lt $line.Length) {
     [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
-  } else
-  {
+  }
+  else {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
   }
 }
@@ -100,11 +93,10 @@ Set-PSReadLineKeyHandler -Key Shift+Tab `
   $cursor = $null
   [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
 
-  if ($cursor -lt $line.Length)
-  {
+  if ($cursor -lt $line.Length) {
     [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
-  } else
-  {
+  }
+  else {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion($key, $arg)
   }
 }
