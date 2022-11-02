@@ -179,7 +179,7 @@ up_to_date = ''
 
 [git_branch]
 always_show_remote = true
-format = '[$symbol$branch(:$remote_branch)]($style) '
+format = '[ $symbol$branch(:$remote_branch)]($style) '
 style = 'bold 164'
 symbol = ' '
 truncation_length = 15
