@@ -14,7 +14,7 @@ $sudo$username\
 $hostname\
 $shlvl\
 $singularity\
-[\\(](fg:213)$directory$git_branch$git_status$docker_context[\\)](fg:213)\
+[\\(](fg:213)$directory$git_branch$git_status$docker_context[\\) ](fg:213)\
 $aws$gcloud$openstack$azure$container$kubernetes\
 $package\
 $dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$buf$c$cmake$cobol$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$crystal$vlang$spack$vagrant$zig$nix_shell$conda\
