@@ -2,6 +2,8 @@
 Import-Module -Name CompletionPredictor
 
 $env:PYTHONIOENCODING = "utf-8"
+$env:PYTHON_HOST_PROG = "C:\Python311\"
+$env:PYTHON3_HOST_PROG = "C:\Python311\"
 
 function Invoke-Admin () {
 	if ($Args.Count -eq 0) {
@@ -49,6 +51,12 @@ function Invoke-ls() {
 	}
 };
 Set-Alias ls Invoke-ls
+
+function Set-Location-Up() {
+	Set-Location ..
+}
+
+Set-Alias .. Set-Location-Up
 
 # set for starship
 $OS = $env:OS
