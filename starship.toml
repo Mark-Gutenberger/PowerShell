@@ -6,8 +6,7 @@ add_newline = false
 command_timeout = 2000
 scan_timeout = 500
 
-format = """
-\n\
+format = """\
 [$time on ${custom.OS} ](bold white)$memory_usage$cmd_duration
 $battery\
 $sudo$username\
