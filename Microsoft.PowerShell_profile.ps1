@@ -1,6 +1,7 @@
 ﻿Import-Module -Name PSReadLine
 Import-Module -Name CompletionPredictor
 
+# (neo)vim things...
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHON_HOST_PROG = "C:\Python311\"
 $env:PYTHON3_HOST_PROG = "C:\Python311\"
@@ -27,29 +28,51 @@ function Invoke-Admin () {
 	};
 };
 
-Set-Alias Admin Invoke-Admin
+Set-Alias sudo Invoke-Admin
 
 function Invoke-Batstat () {
 	WMIC PATH Win32_Battery Get EstimatedChargeRemaining
 };
 
-Set-Alias Batstat Invoke-Batstat
-Set-Alias Battery Invoke-Batstat
+$lsd = "$HOME\dev\lsd\target\release\lsd.exe"
+$lsd_debug = "$HOME\dev\lsd\target\debug\lsd.exe"
 
-Set-Alias WinTerm wt
+Set-Alias batstat Invoke-Batstat
+Set-Alias battery Invoke-Batstat
 
 function Invoke-ls() {
-	# wrapper for ls command
-	$ls = "C:\Users\Mark-\dev\lsd\target\debug\lsd.exe"
-	# run lsd
 	try {
-		& $ls -A $Args
+		# default to showing all files
+		& $lsd -A $Args
 	}
 	catch {
-		Write-Host "Error: No batch operation, program, or executable matching the pattern of $ls found...`n Please edit your powershell profile and update the variable" -ForegroundColor Yellow
-		Get-ChildItem $Args
+		# try to use debug version if there is no release build
+		try {
+			& $lsd_debug -A $Args
+		}
+		catch {
+			Write-Host "Warning: No batch operation, program, or executable matching the pattern of $lsd or $lsd_debug found...`n Please update your powershell profile" -ForegroundColor Yellow
+			Get-ChildItem $Args
+		}
 	}
 };
+
+function Invoke-lsd() {
+	try {
+		& $lsd $Args
+	}
+	catch {
+		try {
+			& $lsd_debug $Args
+		}
+		catch {
+		 Write-Host "Warning: No batch operation, program, or executable matching the pattern of $lsd or $lsd_debug found...`n Please update your powershell profile" -ForegroundColor Yellow
+		 Get-ChildItem $Args
+		}
+	}
+};
+
+Set-Alias lsd Invoke-lsd
 Set-Alias ls Invoke-ls
 
 function Set-Location-Up() {
@@ -58,11 +81,18 @@ function Set-Location-Up() {
 
 Set-Alias .. Set-Location-Up
 
+function Invoke-rm() {
+	Remove-Item $Args -Force -Recurse
+}
+
+Set-Alias rm Invoke-rm
+
 # set for starship
 $OS = $env:OS
 Set-Alias $OS $env:OS
 Invoke-Expression (& starship init powershell)
 
+# manages the window title:
 $host.UI.Write("`e]0;$pwd`a")
 
 Invoke-Expression "$(thefuck --alias)"
@@ -111,4 +141,3 @@ Set-PSReadLineKeyHandler -Key Shift+Tab `
 	}
 }
 
-Set-Alias lvim "C:\Users\Mark-\documents\powershell\lvim\lvim.ps1"
